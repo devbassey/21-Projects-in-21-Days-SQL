@@ -62,5 +62,46 @@ SELECT
 FROM
     nyc_restaurant
 WHERE
-    GRADE = 'B'; # ---> this results shows that there are 19 GRADE B RESTAURANTS in New York
+    GRADE = 'B'; # ---> this results shows that there are 7 GRADE B RESTAURANTS in New York
 
+
+#---GRADE C
+SELECT 
+    DBA, BORO, GRADE, SCORE
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'C'; #---> This result displays all the GRADE A restaurants in New York
+    
+SELECT 
+    COUNT(grade) AS Grade_C
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'C'; # ---> this results shows that there are 5 GRADE C RESTAURANTS in New York
+
+
+-- Grade B and Grade C restaurants (using OR)
+SELECT 
+    DBA, BORO, GRADE, SCORE
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'B' OR GRADE = 'C'
+LIMIT 20;
+
+
+
+# Step 4 — Find violations in a specific borough
+-- All violations in Manhattan
+SELECT 
+    DBA,
+    BORO,
+    INSPECTION_DATE,
+    VIOLATION_DESCRIPTION,
+    CRITICAL_FLAG
+FROM
+    nyc_restaurant
+WHERE
+    BORO = 'MANHATTAN'
+        AND CRITICAL_FLAG = 'Critical';
