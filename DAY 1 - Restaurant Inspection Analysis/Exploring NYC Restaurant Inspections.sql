@@ -1,9 +1,3 @@
-#---->EXPLORING NYC RESTAURANT INSPECTIONS<----
-
-# STEP 1 — Preview the table
-# I used the SELECT keyword to preview the snapshot of the restaurant data. I limit the search result to 10.
-
--- See ALL columns for the first 10 rows
 SELECT 
     *
 FROM
@@ -11,7 +5,7 @@ FROM
 LIMIT 10;
 
 
--- Count total number of rows in the table.
+#-- Count total number of rows in the table.
 SELECT 
     COUNT(*) AS Total_Rows
 FROM
@@ -22,15 +16,35 @@ FROM
 # Step 2 — Select only the columns need for the analysis
 #----> Rename columns where column names have spaces in between
 ALTER TABLE nyc_restaurant RENAME COLUMN `CUISINE DESCRIPTION` TO CUISINE_DESCRIPTION;
+ALTER TABLE nyc_restaurant RENAME COLUMN `INSPECTION DATE` TO INSPECTION_DATE;
+ALTER TABLE nyc_restaurant RENAME COLUMN `VIOLATION DESCRIPTION` TO VIOLATION_DESCRIPTION;
 
-
+-- Show only the important columns
 SELECT 
     DBA,
     BORO,
-    'CUISINE DESCRIPTION',
-    'INSPECTION DATE',
+    CUISINE_DESCRIPTION,
+    INSPECTION_DATE,
     GRADE,
     SCORE,
-    'VIOLATION DESCRIPTION'
+    VIOLATION_DESCRIPTION
 FROM nyc_restaurant
 LIMIT 20;
+
+
+# Step 3 — Filter restaurants by grade
+#---GRADE A
+SELECT 
+    DBA, BORO, GRADE, SCORE
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'A'; #---> This result displays all the GRADE A restaurants in New York
+    
+SELECT 
+    COUNT(grade) AS Grade_A
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'A'; # ---> this results shows that there are 19 GRADE A RESTAURANTS in New York
+
