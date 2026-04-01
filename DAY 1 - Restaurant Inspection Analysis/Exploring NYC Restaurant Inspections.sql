@@ -114,5 +114,22 @@ WHERE
         AND CRITICAL_FLAG = 'Critical';
         
 
+# Step 4 — Find violations in a specific borough
+-- All violations in Bronx
+SELECT 
+    DBA,
+    BORO,
+    INSPECTION_DATE,
+    VIOLATION_DESCRIPTION,
+    CRITICAL_FLAG
+FROM
+    nyc_restaurant
+WHERE
+    BORO = 'Bronx'
+        AND CRITICAL_FLAG = 'Critical';
 
-select * from nyc_restaurant;
+# Displays CRITICAL_FLAG Violation results between Manhattan and Bronx 
+SELECT DBA, BORO, VIOLATION_DESCRIPTION, CRITICAL_FLAG
+FROM nyc_restaurant
+where CRITICAL_FLAG = 'Critical';
+        
