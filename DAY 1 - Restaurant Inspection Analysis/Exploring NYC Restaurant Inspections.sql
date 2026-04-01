@@ -18,6 +18,7 @@ FROM
 ALTER TABLE nyc_restaurant RENAME COLUMN `CUISINE DESCRIPTION` TO CUISINE_DESCRIPTION;
 ALTER TABLE nyc_restaurant RENAME COLUMN `INSPECTION DATE` TO INSPECTION_DATE;
 ALTER TABLE nyc_restaurant RENAME COLUMN `VIOLATION DESCRIPTION` TO VIOLATION_DESCRIPTION;
+ALTER TABLE nyc_restaurant RENAME COLUMN `CRITICAL FLAG` TO CRITICAL_FLAG;
 
 -- Show only the important columns
 SELECT 
@@ -47,4 +48,19 @@ FROM
     nyc_restaurant
 WHERE
     GRADE = 'A'; # ---> this results shows that there are 19 GRADE A RESTAURANTS in New York
+
+#---GRADE B
+SELECT 
+    DBA, BORO, GRADE, SCORE
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'B'; #---> This result displays all the GRADE A restaurants in New York
+    
+SELECT 
+    COUNT(grade) AS Grade_B
+FROM
+    nyc_restaurant
+WHERE
+    GRADE = 'B'; # ---> this results shows that there are 19 GRADE B RESTAURANTS in New York
 
