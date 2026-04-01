@@ -4,6 +4,13 @@ FROM
     nyc_restaurant
 LIMIT 10;
 
+#-- Display the unique Borough in the data
+select distinct(boro)
+from nyc_restaurant;
+
+#-- Display all the Boro
+SELECT BORO
+FROM nyc_restaurant;
 
 #-- Count total number of rows in the table.
 SELECT 
@@ -105,3 +112,7 @@ FROM
 WHERE
     BORO = 'MANHATTAN'
         AND CRITICAL_FLAG = 'Critical';
+        
+
+
+select * from nyc_restaurant;
