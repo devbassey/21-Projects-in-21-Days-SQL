@@ -1,1 +1,3 @@
-SELECT * FROM nyc_restaurant
+#---->EXPLORING NYC RESTAURANT INSPECTIONS<----
+
+SELECT * FROM nyc_restaurant;
