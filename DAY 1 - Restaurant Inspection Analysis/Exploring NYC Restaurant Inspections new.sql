@@ -58,7 +58,6 @@ from nyc_restaurant
 WHERE GRADE = 'Not Yet Graded'; -- This query counts the number of records in the nyc_restaurant table where the GRADE column has the value 'Not Yet Graded', which helps to identify how many inspections have not yet received a grade. (144727 ROWS WAS COUNTED)
 
 
-
 ---Grade Distribution Analysis
 SELECT 
     GRADE, 
@@ -72,6 +71,17 @@ GROUP BY
 ORDER BY 
     grade_count DESC; -- This query counts the number of records for each grade in the nyc_restaurant table, filtering for the grades 'A', 'B', 'C', and 'Not Yet Graded'. The results are grouped by grade and ordered in descending order based on the count of records.
 
+---Critical Flag Analysis
+select distinct critical_flag
+from nyc_restaurant; -- This query retrieves the distinct values from the critical_flag column in the nyc_restaurant table, which helps to identify the unique values that indicate whether a violation is considered critical or not.
+
+
+-- Count the number of records for each critical flag category
+select critical_flag, count(*) as critical_count
+from nyc_restaurant
+WHERE critical_flag in ('Critical', 'Not Critical', 'Not Applicable')
+group by critical_flag
+order by critical_count; -- This query counts the number of records for each category in the critical_flag column of the nyc_restaurant table, filtering for the values 'Critical', 'Not Critical', and 'Not Applicable'. The results are grouped by critical_flag and ordered based on the count of records.
 
 --Violation Code Analysis
 select 
